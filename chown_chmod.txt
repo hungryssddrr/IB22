@@ -1,0 +1,19 @@
+Смена текущей группы:
+newgrp <имя группы>
+newgrp group1
+
+Смена владельца/группы обьекта
+sudo chown <имя владельца:имя группы> <имя объекта>
+sudo chown us1:group1 /home/student/Folder1
+sudo chown :group1 /home/student/Folder1/TMP1
+
+Изменение режима доступа
+sudo chmod <режим доступа> <имя обьекта>
+sudo chmod 666 /home/student/Folder1/TMP1/test1.txt
+sudo chmod ugo+rwx-rwx /home/student/Folder1/TMP1/test2.txt
+
+Просмотр информации об обьекте
+stat <имя обьекта>
+stat /home/student/Folder3
+
+
