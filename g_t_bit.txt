@@ -1,5 +1,32 @@
 Установка группового бита
 sudo chmod g+s <имя файла или папки>
+Установка группового (g) бита для файла позволяет выполнять файл от имени группы
+Установка группового бита для папки устанавливает режим наследования группы для всех обьектов, созданных внутри этой папаки 
+Права доступа:
+stat TEST_GF
+2775/rwxrwsr-x
+sudo chown :gr1 TEST_GF
+mkdir TEST_GF/FOLD1
+stat TEST_GF/FOLD1
+2775/rwxrwsr-x Uid:(1000/student) Gid:(1006/gr1)
+Для файла наследуется только группа:
+touch TEST_GF/file1.txt
+stat TEST_GF/file1.txt
+0664/-rw-rw-r--Uid:(1000/student) Gid: (1006/gr1) 
 
-Установка стики-бита
+
+
+
+Установка стики-бита (sticky-bit) 
 sudo chmod o+t <имя папки>
+t-бит устанавливается для защиты файлов внутри папки под удаления пользователями, не являющимися владельцем этих файлов 
+sudo chmod o+t TEST_SB
+sudo chmod g+s TEST_SB
+sudo chown :gr1 TEST_SB
+touch TEST_SB/test_sb3.txt
+
+Для пользователя us1 из группы gr1 разрешено редактирование файла test_sb3.txt 
+Попытка удаления этого файла предотвращается:
+rm TEST_SB/test_sb3.txt 
+rm: cannot remove 'TEST_SB/test_sb3.txt': Operation not permitted 
+
